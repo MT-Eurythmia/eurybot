@@ -51,9 +51,9 @@ class AutoupdatePoller(object):
             source["last_seen_id"] = result.entries[-1].id
 
     def _doentry(self, entry, directory, upstream):
-        msg = "%s\nSubmodule %s was updated on %s. Adding to the to-update file." % (ParseGitHubCommit(entry), directory, "upstream" if upstream else "origin")
         with open('/home/minetest/to_update_submodules.txt', 'a') as file:
             if upstream:
                 file.write("%s!\n" % (directory, ))
             else:
                 file.write("%s\n" % (directory, ))
+        return "%s\nSubmodule %s was updated on %s. Adding to the to-update file." % (ParseGitHubCommit(entry), directory, "upstream" if upstream else "origin")
