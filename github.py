@@ -32,7 +32,8 @@ def ParseGitHubCommit(feed_entry, log_format=False):
         committer_final = f_cshort % committer
     else:
         committer_final = f_clong % (committer, committer_realname)
-    return f_all % (committer_final, repo_name, commit_text, commit_hash, commit_link, commit_time)
+    #return f_all % (committer_final, repo_name, commit_text, commit_hash, commit_link, commit_time)
+    return f_clong % (commit_text, repo_name)
 
 class GithubPoller(FeedPoller):
     """
